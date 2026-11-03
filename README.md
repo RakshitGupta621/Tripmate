@@ -2,6 +2,12 @@
 
 TripMate plans compact city getaways from a starting city, destination, and trip length. It uses Groq for the itinerary, OpenStreetMap services for city locations and a free map, and Wikipedia for a short destination summary.
 
+<img width="1256" height="749" alt="image" src="https://github.com/user-attachments/assets/b877b4c3-66f8-44c5-aab2-9ea543ee09b9" />
+<img width="1440" height="780" alt="image" src="https://github.com/user-attachments/assets/4ed64fe7-958c-4ea8-b3d3-f91661af3f00" />
+<img width="1332" height="731" alt="image" src="https://github.com/user-attachments/assets/e5811a78-2d92-4c40-937e-0ace3bf3e39b" />
+<img width="1256" height="749" alt="image" src="https://github.com/user-attachments/assets/9c13d8c8-1935-48f0-ac07-a6f6fdace697" />
+<img width="1431" height="781" alt="image" src="https://github.com/user-attachments/assets/cafda70f-759e-4218-86d6-afccef8892c3" />
+
 ## Run locally
 
 1. Install Node.js 20 or newer.
