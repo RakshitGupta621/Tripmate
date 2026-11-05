@@ -15,4 +15,4 @@ services:
       - key: GROQ_MODEL
         value: qwen/qwen3.8-27b
       - key: AI_TIMEOUT_MS
-        value: "60000"
+        value: '60000'

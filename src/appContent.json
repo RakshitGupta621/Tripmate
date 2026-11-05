@@ -1,0 +1,206 @@
+{
+  "navigation": {
+    "homeLabel": "TripMate home",
+    "mainNavigation": "Main navigation",
+    "plan": "Plan a trip",
+    "howItWorks": "How it works",
+    "startExploring": "Start exploring",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "switchMode": "Switch to {mode} mode",
+    "modeLight": "light",
+    "modeDark": "dark"
+  },
+  "hero": {
+    "eyebrow": "YOUR NEXT GOOD STORY STARTS HERE",
+    "title": "Go somewhere",
+    "titleAccent": "good.",
+    "description": "Thoughtful little getaways, planned around you. Tell us where you’re starting and we’ll take it from there.",
+    "noteTitle": "Less planning, more looking forward.",
+    "noteDescription": "Your trip, shaped into a day-by-day plan.",
+    "statOne": "Made for real getaways",
+    "statTwo": "Routes & local context",
+    "illustrationLabel": "Illustration of a sunny coastal destination",
+    "artLabel": "Take the scenic route",
+    "artSubLabel": "There’s no rush.",
+    "postcard": "SLOW",
+    "postcardSecondLine": "MORNINGS",
+    "coordinates": "37° 58′ N\u00a0\u00a0 23° 43′ E"
+  },
+  "planner": {
+    "kicker": "LET’S MAKE A PLAN",
+    "title": "Where to next?",
+    "stepNumber": "01",
+    "step": "THE DETAILS",
+    "people": "PEOPLE",
+    "person": "person",
+    "peoplePlural": "people",
+    "source": "STARTING FROM",
+    "sourcePlaceholder": "Your city",
+    "useLocation": "Use my location",
+    "findingLocation": "Finding location…",
+    "destination": "HEADING TO",
+    "destinationPlaceholder": "A city you’re curious about",
+    "swapCities": "Swap starting and destination cities",
+    "departure": "DEPARTURE",
+    "return": "RETURN",
+    "departAround": "DEPART AROUND",
+    "arriveAround": "ARRIVE AROUND",
+    "datesHelp": "Choose dates up to 10 days apart",
+    "tripLength": "{days} {unit} · calculated from your dates",
+    "budget": "TOTAL TRIP BUDGET",
+    "budgetAria": "Total trip budget",
+    "currency": "₹ INR",
+    "includeBudget": "Include budget in itinerary",
+    "include": "Include",
+    "preferences": "Trip preferences",
+    "preferencesSummary": "Travel style · modes · interests",
+    "buildTrip": "Build my trip",
+    "loading": "Finding your way...",
+    "errorTitle": "We hit a little bump.",
+    "dismissError": "Dismiss error",
+    "noAccounts": "No accounts. No fuss. Just a good plan."
+  },
+  "cityAutocomplete": {
+    "suggestionsLabel": "City suggestions",
+    "searchingLabel": "Searching cities",
+    "noMatches": "No city matches yet. You can still enter it.",
+    "locationDenied": "Location permission is off. Enter your starting city or try again.",
+    "locationUnavailable": "Your location could not be found. Enter your city or try again.",
+    "locationUnsupported": "Location is not supported here. Enter your starting city manually."
+  },
+  "preferences": {
+    "toCity": "GETTING TO THE CITY",
+    "aroundCity": "GETTING AROUND THE CITY",
+    "travelStyle": "TRAVEL STYLE",
+    "interestsLegend": "WHAT DO YOU ENJOY?",
+    "familyFriendly": "Make suggestions family-friendly",
+    "interests": ["History", "Food", "Nature", "Culture", "Shopping", "Religious sites"],
+    "timePeriods": [
+      { "value": "flexible", "label": "Flexible · choose for me" },
+      { "value": "early", "label": "Early morning · 4–7 AM" },
+      { "value": "morning", "label": "Morning · 7–11 AM" },
+      { "value": "afternoon", "label": "Afternoon · 11 AM–4 PM" },
+      { "value": "evening", "label": "Evening · after 4 PM" }
+    ],
+    "travelStyles": [
+      { "value": "balanced", "label": "Balanced · a little of both" },
+      { "value": "relaxed", "label": "Relaxed · fewer transfers" },
+      { "value": "active", "label": "Active · fit more in" },
+      { "value": "value", "label": "Most cost-effective" },
+      { "value": "luxury", "label": "Comfort and luxury" }
+    ],
+    "intercityModes": [
+      { "value": "auto", "label": "TripMate chooses for me" },
+      { "value": "train", "label": "Train" },
+      { "value": "bus", "label": "Bus" },
+      { "value": "flight", "label": "Flight" },
+      { "value": "car", "label": "Car or taxi" }
+    ],
+    "localModes": [
+      { "value": "auto", "label": "TripMate chooses for me" },
+      { "value": "walking", "label": "Walk where practical" },
+      { "value": "public-transit", "label": "Public transport" },
+      { "value": "taxi", "label": "Auto or taxi" },
+      { "value": "private-car", "label": "Private car" }
+    ],
+    "travelStyleLabels": {
+      "balanced": "Balanced",
+      "relaxed": "Relaxed",
+      "active": "Active",
+      "value": "Cost-conscious",
+      "luxury": "Comfort-focused"
+    },
+    "localModeLabels": {
+      "auto": "TripMate’s suggested local transport",
+      "walking": "Walking where practical",
+      "public-transit": "Public transport",
+      "taxi": "Auto or taxi",
+      "private-car": "Private car"
+    }
+  },
+  "results": {
+    "sectionKicker": "YOUR LITTLE ESCAPE",
+    "ready": "READY TO GO",
+    "madeFor": "Made for",
+    "recommendedRoute": "Recommended route",
+    "depart": "Depart",
+    "arrive": "Arrive",
+    "checkSchedule": "check schedule",
+    "estimated": "estimated",
+    "travelDisclaimer": "Estimated planning times · confirm live train or flight schedules before booking.",
+    "gettingAround": "GETTING AROUND",
+    "travelStyleLabel": "Travel style:",
+    "dayByDay": "THE DAY-BY-DAY",
+    "destinationCity": "DESTINATION CITY",
+    "mapDisclaimer": "All itinerary places are pinned on the destination map.",
+    "snapshotKicker": "DESTINATION SNAPSHOT",
+    "snapshotDescription": "Your itinerary could not be completed, but here’s the destination information we could retrieve.",
+    "localContext": "A LITTLE LOCAL CONTEXT",
+    "preferencesAria": "Preferences used for this itinerary",
+    "fallbackTitle": "{days} days in {city}",
+    "gettingToCity": "GETTING TO {city}",
+    "routeFallback": "{source} to {destination}",
+    "daysCount": "{count} days",
+    "dayLabel": "DAY {day}",
+    "dayThemeFallback": "A day in {city}",
+    "snapshotTitle": "A quick look at {city}",
+    "wikipediaLink": "A little more on Wikipedia",
+    "wikiMark": "W"
+  },
+  "budget": {
+    "title": "YOUR BUDGET PLAN",
+    "regionLabel": "Budget allocation",
+    "totalLabel": "total",
+    "caption": "Budget for {count} {traveler} · total for the whole trip.",
+    "traveler": "traveler",
+    "travelers": "travelers",
+    "estimateNote": "Estimated for this destination using your travel style, transport, interests, and trip length."
+  },
+  "map": {
+    "regionLabel": "Interactive destination city map",
+    "cityCenter": "City center",
+    "destination": "destination",
+    "itineraryPlaces": "Itinerary places",
+    "dayLabel": "Day {day}",
+    "tooltip": "{day} · {title}",
+    "popup": "{day} · {time}",
+    "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
+  },
+  "itineraryActions": {
+    "print": "Print or save as PDF",
+    "share": "Share itinerary",
+    "shareDescription": "Send this itinerary to your travel group.",
+    "preparing": "Preparing a shareable link…",
+    "copied": "Link copied. You can paste it into any app.",
+    "copyFailed": "Sharing and link copying are unavailable in this browser.",
+    "shareFailed": "Sharing is unavailable here. Try copying the link from the address bar.",
+    "nativeShareTitle": "Share this itinerary"
+  },
+  "howItWorks": {
+    "kicker": "SMALL INPUT, BIG DAYDREAM",
+    "titleFirst": "A trip takes shape",
+    "titleSecond": "in three little steps.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Pick your places",
+        "description": "Start with where you are and somewhere you’d like to be."
+      },
+      {
+        "number": "02",
+        "title": "We do the thinking",
+        "description": "A thoughtful itinerary, made for the days you have."
+      },
+      {
+        "number": "03",
+        "title": "Find your way",
+        "description": "Get the lay of the land, with a map and local context."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Made for the joy of going somewhere.",
+    "credit": "Maps & routes by OpenStreetMap · Local context from Wikipedia"
+  }
+}

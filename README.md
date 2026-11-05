@@ -25,22 +25,36 @@ The Groq key is read only by the Express server. Do not add it to a `VITE_` vari
 
 ## Features and resilience
 
-- Plans 1–10 days with only the essential inputs: starting city, destination, and trip length.
-- Accepts a 1–12 person group size and an optional per-person trip budget in Indian rupees (INR), then scales and splits the group total across travel (25%), stay (35%), food (20%), shopping (10%), and activities (10%). The total is included in the itinerary prompt and the rounded allocations sum exactly to the group total.
-- Plans a comfortable daily pace with a destination-specific mix of notable sights, heritage, food, gardens, and religious places where relevant. Activity counts vary by day, with estimated start times and visit durations to account for travel and rest.
+- Plans trips of up to 10 days from departure and return dates; trip length is calculated automatically.
+- Accepts a 1–12 person group size and an optional total trip budget in Indian rupees (INR) for the whole group. Groq suggests destination-specific category shares; when it omits them, TripMate estimates shares from the city cost profile, trip length, transport, and traveler preferences. Category amounts always add up to the selected total.
+- Keeps preferences optional: travel style changes daily pace and cost/comfort choices; selected interests guide the actual stops, alongside transport and family-friendly choices. The results show a small recap of the preferences used.
+- Lets travelers choose when they want to depart and arrive. The itinerary gives estimated departure and arrival windows that fit the selected transport and route; travelers should check live train or flight schedules before booking.
+- Builds a schedule density around the selected pace: roughly 2–4 stops for relaxed, 3–5 for balanced, or up to 7 for active days when travel times and visit durations allow. It groups stops by area, orders them by time, and keeps arrival and transfer days lighter.
 - Suggests matching cities as you type, with keyboard navigation and country/state labels to distinguish duplicates.
-- Keeps the day-by-day itinerary focused on the destination and shows only the destination city in the map panel; the source city is used for the separate travel note.
+- Keeps the selected destination at the center of the itinerary and map; the source city is used only for the separate travel recommendation.
 - Validates inputs on both client and server; checks geocoded city names before generating.
-- Keeps itinerary responses in a small in-memory cache for 30 minutes to avoid duplicate Groq requests. The cache resets when the server restarts.
-- Explains missing key, rate limit, timeout, upstream, and malformed-response errors. If Groq cannot generate a plan, the app looks for nearby cities and lets the traveler switch destinations.
-- Loads a Wikipedia summary independently, so a missing summary does not block the itinerary.
-- Uses Photon for debounced city suggestions, OpenStreetMap/Nominatim for final geocoding, OpenStreetMap tiles through Leaflet, and Overpass for nearby-city suggestions. The map line is a direct, approximate city-to-city line; it is not turn-by-turn routing. These community services are free to use within their usage policies and may occasionally be unavailable.
+- Keeps itinerary responses in a small in-memory cache for 30 minutes to avoid duplicate Groq requests. Preference selections are part of the cache key, so a different style or interest set gets its own plan. The cache resets when the server restarts.
+- Explains missing key, rate limit, timeout, upstream, and malformed-response errors.
+- Loads a text-only Wikipedia summary independently, so a missing summary does not block the itinerary.
+- Uses Photon for debounced city suggestions, OpenStreetMap/Nominatim for final geocoding, and OpenStreetMap tiles through Leaflet. The destination map can filter stops by day, show same-area stop groups, and draw estimated walking or driving routes using the public Valhalla demo. A day-specific directions link opens in Google Maps without an API key. Public community routing services follow fair-use limits, may be unavailable, and should not be treated as live navigation; route links remain available when route estimates fail.
+
+### Free service limits
+
+The public Valhalla routing demo is suitable for a small hobby app and can rate-limit requests; for heavier production traffic, use a hosted routing service or maintain your own Valhalla instance. Google Maps is opened only when a traveler selects directions; TripMate does not call a paid Google Maps API.
 
 ## Checks
 
 ```sh
-npm test
-npm run build
+npm run check
 ```
 
-Tests cover request validation, Groq response parsing and failures, itinerary display, and nearby-city fallback UI.
+The check runs Prettier validation, ESLint, TypeScript validation, all tests, and the production build. The same command runs from the Git pre-push hook and GitHub Actions.
+
+## Code layout
+
+- `src/components/App/App.tsx` coordinates form state, API requests, session caching, and itinerary state.
+- `src/components/AppContent/AppContent.tsx` composes the planner and itinerary views.
+- Each component folder contains its TSX component, a matching `.test.tsx` file, and a named `.types.ts` file.
+- `src/components/` contains the planner controls and reusable result cards.
+- `src/constants/` and `src/utils/` hold shared form defaults, options, formatting, date, and preference helpers.
+- `server/` validates requests, caches plans by their inputs, and builds the provider prompt.
