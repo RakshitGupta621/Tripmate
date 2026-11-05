@@ -10,7 +10,6 @@ export interface TripResultsProps {
     | 'expandedDay'
     | 'budgetAllocation'
     | 'places'
-    | 'pickedCities'
     | 'activityPins'
     | 'dayRoutes'
     | 'wiki'

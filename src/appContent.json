@@ -168,14 +168,7 @@
     "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
   },
   "itineraryActions": {
-    "print": "Print or save as PDF",
-    "share": "Share itinerary",
-    "shareDescription": "Send this itinerary to your travel group.",
-    "preparing": "Preparing a shareable link…",
-    "copied": "Link copied. You can paste it into any app.",
-    "copyFailed": "Sharing and link copying are unavailable in this browser.",
-    "shareFailed": "Sharing is unavailable here. Try copying the link from the address bar.",
-    "nativeShareTitle": "Share this itinerary"
+    "print": "Print or save as PDF"
   },
   "howItWorks": {
     "kicker": "SMALL INPUT, BIG DAYDREAM",

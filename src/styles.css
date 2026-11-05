@@ -4404,9 +4404,8 @@ summary:focus-visible {
   color: #b7b1c8;
 }
 .itinerary-actions {
-  display: grid;
-  grid-template-columns: minmax(160px, 1fr) 2fr;
-  gap: 12px 20px;
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
   margin-top: 20px;
   padding: 18px 20px;
@@ -4415,22 +4414,7 @@ summary:focus-visible {
   background: var(--paper);
   color: var(--ink);
 }
-.itinerary-actions-copy b {
-  font-size: 15px;
-}
-.itinerary-actions-copy p {
-  margin: 5px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-}
-.itinerary-actions-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: flex-end;
-}
-.itinerary-actions-buttons button,
-.itinerary-actions-buttons a {
+.itinerary-actions button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -4445,22 +4429,9 @@ summary:focus-visible {
   font-weight: 650;
   cursor: pointer;
 }
-.itinerary-actions-buttons button:hover:not(:disabled),
-.itinerary-actions-buttons a:hover:not([aria-disabled='true']) {
+.itinerary-actions button:hover {
   border-color: var(--green);
   color: var(--green);
-}
-.itinerary-actions-buttons button:disabled,
-.itinerary-actions-buttons a[aria-disabled='true'] {
-  opacity: 0.55;
-  cursor: wait;
-}
-.share-status {
-  grid-column: 1 / -1;
-  min-height: 1em;
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
 }
 .planner-card > .planner-actions {
   grid-column: 1 / -1;
@@ -4489,6 +4460,50 @@ summary:focus-visible {
   justify-self: end;
   margin: 0;
 }
+/* Keep route labels level even when the source field shows location help. */
+.route-fields {
+  align-items: start;
+}
+.city-field-label-row {
+  min-height: 32px;
+}
+.people-label {
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  margin: 0;
+}
+.route-fields .swap-button {
+  align-self: start;
+  margin: 30px 0 0;
+}
+/* Keep preference controls compact and aligned to the left of the card. */
+.preference-grid {
+  grid-template-columns: repeat(2, minmax(0, 420px));
+  justify-content: start;
+  gap: 16px 24px;
+}
+.preference-grid > .preference-field {
+  width: 100%;
+  max-width: 420px;
+}
+.preference-grid > .preference-wide,
+.preference-grid > .preference-family {
+  grid-column: 1 / -1;
+}
+.preference-grid > .preference-wide {
+  width: 100%;
+  max-width: none;
+}
+.preference-chips {
+  width: 100%;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.preference-chip {
+  flex: 0 0 auto;
+}
 @media (max-width: 680px) {
   .planner-card > .planner-actions {
     grid-template-columns: minmax(0, 1fr);
@@ -4506,12 +4521,24 @@ summary:focus-visible {
   }
 }
 @media (max-width: 760px) {
+  .preference-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .preference-grid > .preference-wide,
+  .preference-grid > .preference-family {
+    grid-column: 1;
+  }
+  .preference-chips {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 760px) {
   .itinerary-actions {
-    grid-template-columns: 1fr;
     padding: 16px;
   }
-  .itinerary-actions-buttons {
-    justify-content: flex-start;
+  .itinerary-actions button {
+    width: 100%;
   }
 }
 @media print {

@@ -8,8 +8,6 @@ import {
 } from './useAppEffects.js'
 import { readSessionResult } from '../utils/session.js'
 import { reverseGeocodeCity } from '../services/travel.js'
-import { hasSharedItineraryHash, readSharedItinerary } from '../utils/shareItinerary.js'
-import { SERVICE_MESSAGES } from '../utils/util_constants.js'
 import type {
   ActivityPin,
   CityLocation,
@@ -31,7 +29,6 @@ interface PickedCityPair {
 }
 
 export function useTripPlannerState() {
-  const hasSharedTrip = typeof window !== 'undefined' && hasSharedItineraryHash()
   const [sessionSeed] = useState(readSessionResult)
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     try {
@@ -56,7 +53,6 @@ export function useTripPlannerState() {
     () => sessionSeed?.activityPins || [],
   )
   const [locationStatus, setLocationStatus] = useState<LocationStatus>(() => {
-    if (hasSharedTrip) return 'manual'
     if (sessionSeed?.form?.source) return 'manual'
     return typeof navigator !== 'undefined' && navigator.geolocation ? 'loading' : 'unsupported'
   })
@@ -66,7 +62,7 @@ export function useTripPlannerState() {
   const controllerRef = useRef<AbortController | null>(null)
   const resultsRef = useRef<HTMLElement>(null)
   const sourceEditedRef = useRef(false)
-  const initialLocationRequestedRef = useRef(hasSharedTrip)
+  const initialLocationRequestedRef = useRef(false)
   const focusMode = useInputModality() as 'keyboard' | 'pointer'
   const dayRoutes = useDayRoutes(
     activityPins,
@@ -90,30 +86,6 @@ export function useTripPlannerState() {
     activityPins,
     dayRoutes,
   })
-
-  // Restore the self-contained share link after parsing its optional compression.
-  useEffect(() => {
-    if (!hasSharedTrip) return undefined
-    let active = true
-    readSharedItinerary().then((shared) => {
-      if (!active) return
-      if (!shared) {
-        setError(SERVICE_MESSAGES.sharedLinkInvalid)
-        return
-      }
-      setForm(shared.form)
-      setTrip(shared.trip)
-      setTripForm(shared.tripForm || shared.form)
-      setPlaces(shared.places || { source: null, destination: null })
-      setPickedCities(shared.pickedCities || { source: null, destination: null })
-      setWiki(shared.wiki || null)
-      setActivityPins(shared.activityPins || [])
-      setError('')
-    })
-    return () => {
-      active = false
-    }
-  }, [hasSharedTrip])
 
   // Ask once on a new, blank plan; returning sessions keep their saved source city.
   const locate = useCallback((replaceSource = false, showLoading = true) => {

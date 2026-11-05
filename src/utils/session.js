@@ -1,9 +1,7 @@
 import { INITIAL_FORM, SESSION_RESULT_KEY } from '../constants/trip.js'
-import { hasSharedItineraryHash } from './shareItinerary.js'
 
 export function readSessionResult() {
   try {
-    if (hasSharedItineraryHash()) return null
     const cached = JSON.parse(sessionStorage.getItem(SESSION_RESULT_KEY) || 'null')
     if (!cached?.expiresAt || cached.expiresAt <= Date.now() || !cached.trip) {
       sessionStorage.removeItem(SESSION_RESULT_KEY)

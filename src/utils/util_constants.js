@@ -8,7 +8,6 @@ export const SERVICE_MESSAGES = Object.freeze({
   encyclopediaUnavailable: 'No encyclopedia summary found.',
   itineraryUnavailable: 'We could not create this itinerary. Please try again.',
   datesRequired: 'Choose your departure and return dates to set the trip length.',
-  sharedLinkInvalid: 'This itinerary link is invalid or incomplete. Ask for a fresh link.',
 })
 
 export const PREFERENCE_LABEL_TEXT = Object.freeze({

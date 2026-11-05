@@ -48,6 +48,7 @@ describe('TripResults', () => {
     expect(screen.getByRole('heading', { name: 'Jaipur escape' })).toBeInTheDocument()
     expect(screen.getByText('Amber Fort')).toBeInTheDocument()
     expect(screen.getByText('Map preview')).toBeInTheDocument()
-    expect(await screen.findByRole('button', { name: /Share itinerary/ })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Print or save as PDF/ })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Share itinerary/ })).not.toBeInTheDocument()
   })
 })

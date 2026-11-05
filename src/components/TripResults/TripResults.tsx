@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 import { ArrowRight, Check, ChevronDown, Clock3, MapPin, Sparkles, TrainFront } from 'lucide-react'
 import BudgetBreakdown from '../BudgetBreakdown/BudgetBreakdown'
 import ItineraryActions from '../ItineraryActions/ItineraryActions'
@@ -23,23 +22,6 @@ export default function TripResults({ state, actions, resultsRef }: TripResultsP
     personalizationLabels,
     error,
   } = state
-  const shareData = useMemo(
-    () =>
-      trip
-        ? {
-            form: tripForm || form,
-            tripForm: tripForm || form,
-            trip,
-            places,
-            pickedCities: state.pickedCities,
-            wiki,
-            activityPins,
-            dayRoutes,
-          }
-        : null,
-    [trip, tripForm, form, places, state.pickedCities, wiki, activityPins, dayRoutes],
-  )
-
   return (
     <>
       {trip && (
@@ -195,15 +177,7 @@ export default function TripResults({ state, actions, resultsRef }: TripResultsP
               {wiki && <WikipediaCard wiki={wiki} />}
             </aside>
           </div>
-          {shareData && (
-            <ItineraryActions
-              title={
-                trip.title ||
-                fillText(content.fallbackTitle, { days: trip.days.length, city: form.destination })
-              }
-              data={shareData}
-            />
-          )}
+          <ItineraryActions onPrint={() => window.print()} />
         </section>
       )}
       {!trip && (wiki || (error && form.destination && form.startDate && form.endDate)) && (
