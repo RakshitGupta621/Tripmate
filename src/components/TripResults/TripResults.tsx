@@ -153,6 +153,7 @@ export default function TripResults({ state, actions, resultsRef }: TripResultsP
                   </article>
                 ))}
               </SpotlightSurface>
+              <ItineraryActions onPrint={() => window.print()} />
             </div>
             <aside className="right-results">
               <BudgetBreakdown allocation={budgetAllocation} />
@@ -177,7 +178,6 @@ export default function TripResults({ state, actions, resultsRef }: TripResultsP
               {wiki && <WikipediaCard wiki={wiki} />}
             </aside>
           </div>
-          <ItineraryActions onPrint={() => window.print()} />
         </section>
       )}
       {!trip && (wiki || (error && form.destination && form.startDate && form.endDate)) && (

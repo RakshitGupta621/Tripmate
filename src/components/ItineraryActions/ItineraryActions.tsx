@@ -6,10 +6,10 @@ export default function ItineraryActions({ onPrint }: ItineraryActionsProps) {
   const content = appContent.itineraryActions
 
   return (
-    <section className="itinerary-actions print-hidden" aria-label={content.print}>
+    <div className="itinerary-actions print-hidden">
       <button type="button" onClick={onPrint}>
         <Printer size={16} /> {content.print}
       </button>
-    </section>
+    </div>
   )
 }

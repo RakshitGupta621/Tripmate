@@ -119,7 +119,9 @@ export async function suggestCities(query, signal) {
   if (key.length < 2) return []
   if (suggestionCache.has(key)) return suggestionCache.get(key)
   const url = new URL('https://photon.komoot.io/api/')
-  url.search = new URLSearchParams({ q: query.trim(), limit: '10', lang: 'en' })
+  // Ask for extra candidates because Photon can mix streets and neighborhoods
+  // into the first few results; the UI only displays recognized settlements.
+  url.search = new URLSearchParams({ q: query.trim(), limit: '20', lang: 'en' })
   const response = await fetch(url, {
     signal: deadline(signal, 8_000),
     headers: { Accept: 'application/json' },
@@ -129,10 +131,14 @@ export async function suggestCities(query, signal) {
   const seen = new Set()
   const cities = (data.features || []).flatMap((feature) => {
     const props = feature.properties || {}
-    if (props.osm_key !== 'place' || !['city', 'town', 'village'].includes(props.osm_value))
-      return []
+    const placeType = props.osm_value || props.type
+    if (!['city', 'town', 'village', 'municipality'].includes(placeType)) return []
     const name = props.name || props.city
     if (!name) return []
+    const coordinates = feature.geometry?.coordinates
+    const lon = Number(coordinates?.[0])
+    const lat = Number(coordinates?.[1])
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return []
     const parts = [name, props.state, props.country].filter(
       (part, index, all) => part && all.indexOf(part) === index,
     )
@@ -143,10 +149,11 @@ export async function suggestCities(query, signal) {
     return [
       {
         name,
+        state: props.state,
         label,
         query: label,
-        lat: feature.geometry?.coordinates?.[1],
-        lon: feature.geometry?.coordinates?.[0],
+        lat,
+        lon,
         country: props.country,
       },
     ]

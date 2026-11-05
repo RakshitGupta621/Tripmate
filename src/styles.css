@@ -2532,9 +2532,12 @@ footer {
     gap: 7px;
   }
   .theme-toggle {
-    width: 38px;
-    min-width: 38px;
-    height: 38px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    aspect-ratio: 1;
+    flex: 0 0 44px;
     padding: 0;
   }
   .theme-toggle span {
@@ -4405,33 +4408,66 @@ summary:focus-visible {
 }
 .itinerary-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  margin-top: 20px;
-  padding: 18px 20px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--paper);
-  color: var(--ink);
+  margin-top: 10px;
 }
 .itinerary-actions button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
-  min-height: 40px;
-  padding: 8px 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--paper);
-  color: var(--ink);
+  min-height: 38px;
+  padding: 7px 10px;
+  border: 1px solid #6346d8;
+  border-radius: 9px;
+  background: #6346d8;
+  color: #fff;
   font-size: 12px;
   font-weight: 650;
   cursor: pointer;
+  box-shadow: 0 4px 12px #6346d824;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 .itinerary-actions button:hover {
-  border-color: var(--green);
-  color: var(--green);
+  transform: translateY(-2px);
+  border-color: #765fe0;
+  background: #765fe0;
+  box-shadow: 0 7px 18px #6346d83b;
+}
+.itinerary-actions button::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: -35% auto -35% -45%;
+  width: 34%;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, #ffffff66, transparent);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+.itinerary-actions button:hover::after {
+  transform: translateX(520%) skewX(-18deg);
+}
+.itinerary-actions button > * {
+  position: relative;
+  z-index: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .itinerary-actions button,
+  .itinerary-actions button::after {
+    transition: none;
+  }
+  .itinerary-actions button:hover {
+    transform: none;
+  }
 }
 .planner-card > .planner-actions {
   grid-column: 1 / -1;
@@ -4534,11 +4570,8 @@ summary:focus-visible {
   }
 }
 @media (max-width: 760px) {
-  .itinerary-actions {
-    padding: 16px;
-  }
   .itinerary-actions button {
-    width: 100%;
+    width: auto;
   }
 }
 @media print {
@@ -4564,6 +4597,7 @@ summary:focus-visible {
   footer,
   .print-hidden,
   .ready-badge,
+  .map-card,
   .leaflet-control-zoom,
   .map-legend {
     display: none !important;
